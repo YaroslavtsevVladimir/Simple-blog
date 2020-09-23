@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>{% block title %} {{  post['title'] }} {% endblock %}</h2>
+    <span class="badge badge-pr-primary">{{ post['created'] }}</span>
+    <p>{{ post['content'] }}</p>
+    <button type="button" class="btn btn-primary" onclick="location.href='{{ url_for('edit', post_id=post['id']) }}'">Edit</button>
+    <form action="{{ url_for('delete', post_id=post['id']) }}" method="post">
+        <input type="submit" value="Delete post" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this post?')">
+    </form>
+
+{% endblock %}
